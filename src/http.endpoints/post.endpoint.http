@@ -1,0 +1,8 @@
+POST  http://localhost:3002/users
+Content-Type: application/json
+
+{
+    "name": "Kudirat Ibrahim",
+    "email": "bletimix@email.com",
+    "password": "@newPassWord123"
+}
