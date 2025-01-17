@@ -8,15 +8,21 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { CreateUserProvider } from './provider/create-user.provider';
 import { PaginationQueryDto } from './dto/pageQueryDto';
+import { FindOneByEmailProvider } from './provider/find-one-by-email';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     private readonly createUserProvider: CreateUserProvider,
+    private readonly findOneByEmailProvider: FindOneByEmailProvider,
   ) {}
   public createUser(@Body() createUserDto: CreateUserDto) {
     return this.createUserProvider.createUser(createUserDto);
+  }
+
+  public async findUsersByEmail(email: string) {
+    return await this.findOneByEmailProvider.findUsersByEmail(email);
   }
 
   public async getPaginatedUsers(paginationQueryDto: PaginationQueryDto) {
