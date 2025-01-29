@@ -7,6 +7,23 @@ Content-Type: application/json
     "password": "@newPassWord123"
 }
 
+
+POST  http://localhost:3002/users/many-users
+Content-Type: application/json
+
+{
+    "users":
+    [
+        {
+    "name": "Olayinka Ibrahim",
+    "email": "bletimixau@email.com",
+    "password": "@newPassWord123"
+}
+
+    ]
+}
+
+
 POST  http://localhost:3002/auth/signin
 Content-Type: application/json
 

@@ -14,6 +14,7 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PaginationQueryDto } from './dto/pageQueryDto';
+import { CreateManyUsersDto } from './dto/create-many-users-dto.dto';
 
 @Controller('users')
 export class UsersController {
@@ -40,6 +41,10 @@ export class UsersController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(+id);
+  }
+  @Post('many-users')
+  public createManyUsers(@Body() createManyUserDto: CreateManyUsersDto) {
+    return this.usersService.createManyUsers(createManyUserDto);
   }
 
   @Patch(':id')
