@@ -15,6 +15,9 @@ import { Order } from './order/entities/order.entity';
 import { AuthModule } from './auth/auth.module';
 import { Auth } from './auth/entities/auth.entity';
 import { CreateUserProvider } from './users/provider/create-user.provider';
+import { ChatGateWay } from './chat/chat.gateway';
+// import { APP_INTERCEPTOR } from '@nestjs/core';
+// import { CorsInterceptor } from './auth/cors/cors-interceptor';
 
 @Module({
   imports: [
@@ -41,6 +44,14 @@ import { CreateUserProvider } from './users/provider/create-user.provider';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService, CreateUserProvider],
+  providers: [
+    AppService,
+    CreateUserProvider,
+    ChatGateWay,
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: CorsInterceptor,
+    // },
+  ],
 })
 export class AppModule {}
